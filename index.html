@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego: Adivina el Número</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f8ff;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            margin-top: 50px;
+        }
+
+        .container {
+            margin: 20px auto;
+            padding: 20px;
+            max-width: 400px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        input[type="number"] {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 1em;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #message {
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <h1>Juego: Adivina el Número</h1>
+    <div class="container">
+        <p>Adivina un número entre 1 y 100:</p>
+        <input type="number" id="guess" min="1" max="100" placeholder="Escribe tu número">
+        <button onclick="checkGuess()">Adivinar</button>
+        <p id="message"></p>
+    </div>
+
+    <script>
+        // Genera un número aleatorio entre 1 y 100
+        const randomNumber = Math.floor(Math.random() * 100) + 1;
+
+        function checkGuess() {
+            const userGuess = document.getElementById('guess').value;
+            const message = document.getElementById('message');
+
+            if (!userGuess) {
+                message.textContent = 'Por favor, ingresa un número.';
+                return;
+            }
+
+            if (userGuess == randomNumber) {
+                message.textContent = '¡Felicidades! Adivinaste el número.';
+                message.style.color = 'green';
+            } else if (userGuess < randomNumber) {
+                message.textContent = 'El número es más alto.';
+                message.style.color = 'orange';
+            } else {
+                message.textContent = 'El número es más bajo.';
+                message.style.color = 'orange';
+            }
+        }
+    </script>
+</body>
+</html>
